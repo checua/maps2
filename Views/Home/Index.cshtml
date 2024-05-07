@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" /> @*Hace el signo de + del i del float circulo verde*@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" /> @*Hace que los cajones del select se vean chidos*@
+<link href="~/css/map.css" rel="stylesheet" />
+
+<div id="map_canvas">
+</div>
+
+<div id="over_map">
+    <a href="#" id="btnModal" class="float" data-toggle="modal" data-target=".login-register-form">
+        <i class="fa fa-plus my-float"></i>
+    </a>
+    <a href="#" id="btnModal" class="float" data-toggle="modal" data-target=".login-register-form"><i class="fa fa-plus my-float"></i></a>
+    <div class="tipo1">
+        <div class="letrero">Tipo: </div>
+
+        <div class="dropdown">
+            <select class="form-control" id="cboTipoPropiedad"></select>
+            @*                 <select id="ddType" onchange="showMan(this)" class="form-control">
+            <option value="0" selected="selected">Todos</option>
+            <option value="1">Casa en Venta</option>
+            <option value="2">Casa en Renta</option>
+            <option value="3">Departamento en Venta</option>
+            <option value="4">Departamento en Renta</option>
+            <option value="5">Terreno en Venta</option>
+            <option value="6">Terreno en Renta</option>
+            <option value="7">Local en Venta</option>
+            <option value="8">Local en Renta</option>
+            <option value="9">Edificio en Venta</option>
+            <option value="10">Edificio en Renta</option>
+            <option value="11">Bodega en Venta</option>
+            <option value="12">Bodega en Renta</option>
+            <option value="13">Oficina en Venta</option>
+            <option value="14">Oficina en Renta</option>
+            <option value="15">Rancho en Venta</option>
+            <option value="16">Rancho en Renta</option>
+
+            </select> *@
+        </div>
+    </div>
+    <div class="tipo1">
+        <div class="letrero">Desde: </div>
+        <div class="dropdown">
+            <select id="ddlViewBy" onchange="scheduleA.call(this, event)" class="form-control">
+                <option value="2500" selected="selected">$ 2,500</option>
+                <option value="5000">$ 5,000</option>
+                <option value="10000">$ 10,000</option>
+                <option value="20000">$ 20,000</option>
+                <option value="50000">$ 50,000</option>
+                <option value="100000">$ 100,000</option>
+                <option value="200000">$ 200,000</option>
+                <option value="300000">$ 300,000</option>
+                <option value="400000">$ 400,000</option>
+                <option value="500000">$ 500,000</option>
+                <option value="600000">$ 600,000</option>
+                <option value="700000">$ 700,000</option>
+                <option value="800000">$ 800,000</option>
+                <option value="900000">$ 900,000</option>
+                <option value="1000000">$ 1,000,000</option>
+                <option value="1500000">$ 1,500,000</option>
+                <option value="2000000">$ 2,000,000</option>
+                <option value="2500000">$ 2,500,000</option>
+                <option value="3000000">$ 3,000,000</option>
+                <option value="3500000">$ 3,500,000</option>
+                <option value="4000000">$ 4,000,000</option>
+                <option value="5000000">$ 5,000,000</option>
+                <option value="7000000">$ 7,000,000</option>
+                <option value="8000000">$ 8,000,000</option>
+                <option value="9000000">$ 9,000,000</option>
+                <option value="10000000">$ 10,000,000</option>
+                <option value="1000000000">> $ 10 M</option>
+            </select>
+        </div>
+    </div>
+    <div class="tipo1">
+        <div class="letrero">Hasta: </div>
+        <div class="dropdown">
+            <select id="ddlViewBy2" onchange="scheduleB.call(this, event)" class="form-control">
+                <option value="2500">$ 2,500</option>
+                <option value="5000">$ 5,000</option>
+                <option value="10000">$ 10,000</option>
+                <option value="20000">$ 20,000</option>
+                <option value="50000">$ 50,000</option>
+                <option value="100000">$ 100,000</option>
+                <option value="200000">$ 200,000</option>
+                <option value="300000">$ 300,000</option>
+                <option value="400000">$ 400,000</option>
+                <option value="500000">$ 500,000</option>
+                <option value="600000">$ 600,000</option>
+                <option value="700000">$ 700,000</option>
+                <option value="800000">$ 800,000</option>
+                <option value="900000">$ 900,000</option>
+                <option value="1000000" selected="selected">$ 1,000,000</option>
+                <option value="1500000">$ 1,500,000</option>
+                <option value="2000000">$ 2,000,000</option>
+                <option value="2500000">$ 2,500,000</option>
+                <option value="3000000">$ 3,000,000</option>
+                <option value="3500000">$ 3,500,000</option>
+                <option value="4000000">$ 4,000,000</option>
+                <option value="5000000">$ 5,000,000</option>
+                <option value="7000000">$ 7,000,000</option>
+                <option value="8000000">$ 8,000,000</option>
+                <option value="9000000">$ 9,000,000</option>
+                <option value="10000000">$ 10,000,000</option>
+                <option value="1000000000">> $ 10 M</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/index.js"></script>
+    <script src="~/js/javascriptx.js"></script>
+    <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiEPIpKUewZTon1DeYNod3M63NB_HRcU4&callback=initMap"></script>
+}
