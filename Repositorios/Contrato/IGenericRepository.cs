@@ -1,4 +1,6 @@
-﻿namespace maps2.Repositorios.Contrato
+﻿using maps2.Models;
+
+namespace maps2.Repositorios.Contrato
 {
     public interface IGenericRepository<T> where T : class
     {
@@ -6,6 +8,13 @@
         //Task<bool> Guardar(T modelo);
         //Task<bool> Editar(T modelo);
         //Task<bool> Eliminar(int id);
+    }
+
+    public interface IUsuarioService
+    {
+        Task<Usuario> GetUsuario(string correo, string clave);
+        Task<Usuario> SaveUsuario(Usuario modelo);
+
     }
 }
 

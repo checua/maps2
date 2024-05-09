@@ -1,12 +1,22 @@
+using Microsoft.EntityFrameworkCore;
 using maps2.Models;
 using maps2.Reporsitorio.Implementacion;
 using maps2.Repositorios.Contrato;
-using maps2.Repositorios.Implementacion;
+using ProyectoLogin.Models;
+using ProyectoLogin.Servicios.Implementacion;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DBMarkersContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL"));
+});
+
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 builder.Services.AddScoped<IGenericRepository<TipoPropiedad>, TipoPropiedadRepository>();
 
